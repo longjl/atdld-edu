@@ -1,0 +1,74 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+// 用于检测依赖的包是否有更新
+apply plugin: 'versions'
+
+buildscript {
+    repositories {
+        maven { url 'http://maven.oschina.net/content/groups/public/' }
+        // mavenCentral()
+        maven { url 'http://dl.bintray.com/cjstehno/public' }
+        maven { url 'http://maven2.javacv.googlecode.com/git/' }
+        // mavenLocal()
+    }
+    dependencies {
+        def templatesVersion = project.hasProperty('gradle.templates.ver') ? project.getProperty('gradle.templates.ver') : project.version
+        classpath "gradle-templates:gradle-templates:${templatesVersion}"
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.4'
+    }
+}
+// Check to make sure templates.TemplatesPlugin isn't already added.
+if (!project.plugins.findPlugin(templates.TemplatesPlugin)) {
+    project.apply(plugin: templates.TemplatesPlugin)
+}
+// ======================================================================================
+
+// 所有子项目的通用配置
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: 'maven'
+    apply plugin: 'war'
+
+    // JVM 版本号要求
+    sourceCompatibility = '1.7'
+
+    // java编译的时候缺省状态下会因为中文字符而失败
+    // 所以这儿需要改为utf8
+    // 
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+    repositories {
+        maven { url 'http://maven.oschina.net/content/groups/public/' }
+        mavenCentral()
+    }
+
+    jar {
+        manifest {
+            attributes("Implementation-Title": "Gradle")
+        }
+    }
+
+
+    configurations {
+        // 
+        // 所有需要忽略的包定义在此
+        // 
+        all*.exclude group: 'commons-httpclient'
+        all*.exclude group: 'commons-logging'
+        all*.exclude group: 'commons-beanutils', module: 'commons-beanutils'
+    }
+
+    dependencies {
+
+        ext.jarTree = fileTree(dir: 'libs', include: '**/*.jar')
+        ext.rootProjectLibs = new File(rootProject.rootDir, 'libs').getAbsolutePath()
+        ext.jarTree += fileTree(dir: rootProjectLibs, include: '**/*.jar')
+
+        compile jarTree
+
+    }
+
+}
