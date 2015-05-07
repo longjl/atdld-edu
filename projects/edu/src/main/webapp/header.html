@@ -1,0 +1,86 @@
+<style>
+    .div_none {
+        display: none;
+    }
+
+    .div_block {
+        display: block;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            url: "/get_login_info",
+            type: "post",
+            dataType: "json",
+            success: function (result) {
+                $("#div_logout").removeClass();
+                $("#div_login").removeClass();
+
+                if (result.name == '' || result.name.length == 0) {//未登录
+                    $("#div_logout").addClass("div_none");
+                    $("#div_login").addClass("div_block");
+                } else {
+                    $("#user_center").html(result.name);
+                    $("#div_logout").addClass("div_block");
+                    $("#div_login").addClass("div_none");
+                }
+                //console.log("******" + result.name);
+            }
+        });
+    });
+
+    function logout() {
+        $.ajax({
+            url: "/logout",
+            type: "post",
+            dataType: "json",
+            success: function (result) {
+                $("#div_logout").removeClass();
+                $("#div_login").removeClass();
+
+                $("#div_logout").addClass("div_none");
+                $("#div_login").addClass("div_block");
+            }
+        });
+    }
+</script>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">义务助考平台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">首页</a></li>
+                    <li><a href="question.html">问答</a></li>
+                    <li><a href="#contact">帮助</a></li>
+                </ul>
+            </div>
+            <div id="div_logout" class="div_none">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/user/centre" id="user_center"></a>
+                    </li>
+                    <li style="margin-top: 8px;color: #9d9d9d;"><span>欢迎您使用义务助考平台!</span></li>
+                    <li>
+                        <a href="javascript:logout();">退出</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="div_login" class="div_block">
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="margin-top: 8px;color: #9d9d9d;"><span>第一次使用义务助考平台?</span></li>
+                    <li>
+                        <a href="/user/register">立即注册</a>
+                    </li>
+                    <li style="margin-top: 8px;color: #9d9d9d;">|</li>
+                    <li>
+                        <a href="/user/login">登录</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

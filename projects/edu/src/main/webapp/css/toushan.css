@@ -1,0 +1,276 @@
+/*nav 字体大小*/
+.nav-font-size {
+    font-size: 18px;
+}
+
+.course-item-font-size {
+    font-size: 16px;
+    color: #636162;
+}
+
+.course-item-name-font-size {
+    font-size: 14px;
+    color: #8c8e90;
+}
+
+.user-center-font-size {
+    font-size: 22px;
+    color: #464040;
+}
+
+/*step padding*/
+.step-padding {
+    padding-top: 30px;
+}
+
+.course-item {
+    padding-top: 40px;
+    cursor: pointer;
+}
+
+.course-item:hover {
+    background-color: #f7f6f6;
+}
+
+.img-w-h {
+    width: 45px;
+    height: 45px;
+}
+
+/*我的课程*/
+.my-course {
+    min-height: 140px;
+    text-align: center;
+    font-size: 18px;
+    color: #777577;
+    border-right: 1px solid #f2f1f2;
+    border-bottom: 1px solid #f2f1f2;
+    cursor: pointer;
+    /*box-shadow:0 5px 15px rgba(0, 0, 0, 0.3);*/
+}
+
+.my-course ul {
+    padding-top: 35px;
+    text-align: center;
+    list-style-type: none;
+}
+
+.my-course ul li {
+    display: inline-block;
+    padding-left: 40px;
+}
+
+.my-course:hover {
+    background-color: #F7F7F7;
+}
+
+/* **********************************个人中心**********************************/
+/*学习进度*/
+.learning-progress {
+    min-height: 140px;
+    text-align: center;
+    font-size: 18px;
+    color: #777577;
+    border-right: 1px solid #f2f1f2;
+    border-bottom: 1px solid #f2f1f2;
+    cursor: pointer;
+}
+
+.learning-progress ul {
+    padding-top: 35px;
+    text-align: center;
+    list-style-type: none;
+}
+
+.learning-progress ul li {
+    display: inline-block;
+    padding-left: 40px;
+}
+
+.learning-progress:hover {
+    background-color: #F7F7F7;
+}
+
+/*资料收集*/
+.data-collection {
+    min-height: 140px;
+    text-align: center;
+    font-size: 18px;
+    color: #777577;
+    border-bottom: 1px solid #f2f1f2;
+    cursor: pointer;
+}
+
+.data-collection ul {
+    padding-top: 35px;
+    text-align: center;
+    list-style-type: none;
+}
+
+.data-collection ul li {
+    display: inline-block;
+    padding-left: 40px;
+}
+
+.data-collection:hover {
+    background-color: #F7F7F7;
+}
+
+/*课程评价*/
+.course-evaluation {
+    min-height: 140px;
+    text-align: center;
+    font-size: 18px;
+    color: #777577;
+    border-right: 1px solid #f2f1f2;
+    cursor: pointer;
+}
+
+.course-evaluation ul {
+    padding-top: 35px;
+    text-align: center;
+    list-style-type: none;
+}
+
+.course-evaluation ul li {
+    display: inline-block;
+    padding-left: 40px;
+}
+
+.course-evaluation:hover {
+    background-color: #F7F7F7;
+}
+
+/*意见建议*/
+.proposal {
+    min-height: 140px;
+    text-align: center;
+    font-size: 18px;
+    color: #777577;
+    border-right: 1px solid #f2f1f2;
+    cursor: pointer;
+}
+
+.proposal ul {
+    padding-top: 35px;
+    text-align: center;
+    list-style-type: none;
+}
+
+.proposal ul li {
+    display: inline-block;
+    padding-left: 40px;
+}
+
+.proposal:hover {
+    background-color: #F7F7F7;
+}
+
+/*在线论坛*/
+.forum {
+    min-height: 140px;
+    text-align: center;
+    font-size: 18px;
+    color: #777577;
+    cursor: pointer;
+}
+
+.forum ul {
+    padding-top: 35px;
+    text-align: center;
+    list-style-type: none;
+}
+
+.forum ul li {
+    display: inline-block;
+    padding-left: 40px;
+}
+
+.forum:hover {
+    background-color: #F7F7F7;
+}
+
+/* **********************************footer**********************************/
+.footer {
+    font-size: 12px;
+    width: 100%;
+    color: #aebdc9;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.8);
+}
+
+/* *******************************notice*************************************/
+.notice {
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.notice a {
+    color: #86898a;
+}
+
+.notice a:hover {
+    color: #404040;
+    text-decoration: underline;
+}
+
+.notice ul {
+    text-align: center;
+    list-style-type: disc;
+}
+
+.notice ul li {
+    display: inline-block;
+}
+
+
+.bs-wizard {margin-top: 8%;}
+
+/*Form Wizard*/
+.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background: #6FD974; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: #44b549; border-radius: 50px; position: absolute; top: 8px; left: 8px; }
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #6FD974;}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #E6E6E6;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+/*END Form Wizard*/
+
+
+.login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(/images/login_bg.png) no-repeat;
+    background-size: cover;
+    z-index: -1;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/login_bg.png', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/login_bg.png', sizingMethod='scale')";
+}
+
+.register {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(/images/register_bg.png) no-repeat;
+    background-size: cover;
+    z-index: -1;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/register_bg.png', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/register_bg.png', sizingMethod='scale')";
+}

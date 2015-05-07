@@ -2,12 +2,16 @@ package org.edu;
 
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
+import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
-import com.jfinal.plugin.ehcache.EhCachePlugin;
+import org.edu.controller.CategoryController;
 import org.edu.controller.CommonController;
 import org.edu.controller.UserController;
+import org.edu.model.Category;
 import org.edu.model.User;
+import org.edu.model.UserCategoryRelation;
+import org.edu.model.UserMentorRelation;
 import org.edu.util.PropertiesContent;
 
 
@@ -28,6 +32,7 @@ public class Main extends JFinalConfig {
     public void configRoute(Routes me) {
         me.add("/", CommonController.class);
         me.add("/user", UserController.class);
+        me.add("/category", CategoryController.class);
     }
 
     /**
@@ -42,7 +47,10 @@ public class Main extends JFinalConfig {
         me.add(druidPlugin);
         ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
         arp.setShowSql(true);
-        arp.addMapping("user_user", User.class);
+        arp.addMapping("user", "id", User.class);
+        arp.addMapping("category", "id", Category.class);
+        arp.addMapping("user_category_relation", "id", UserCategoryRelation.class);
+        arp.addMapping("user_mentor_relation", "id", UserMentorRelation.class);
         me.add(arp);
     }
 
@@ -50,7 +58,7 @@ public class Main extends JFinalConfig {
      * 配置全局拦截器
      */
     public void configInterceptor(Interceptors me) {
-        //me.add(new SessionInViewInterceptor());
+        me.add(new SessionInViewInterceptor());
     }
 
     /**

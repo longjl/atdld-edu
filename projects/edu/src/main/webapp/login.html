@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>登录 - 义务助考平台</title>
+
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- daedu-->
+    <link href="/css/toushan.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/js/jquery/jquery-1.11.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/avalon/avalon.js"></script>
+</head>
+<body ms-controller="page" class="login">
+<!-- nav 导航条 start -->
+<div ms-include-src="'/header.html'"></div>
+<!-- nav 导航条 end -->
+
+<!-- 指导 -->
+<div>
+    <div class="container">
+        <div class="row" style="margin-top: 15%;padding-left: 30px;color: #B20000;">
+            <span id="msg">${msg!}</span>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <h3 style="padding-left: 15px;">登录</h3>
+
+                <form action="/user/do_login" method="post" onsubmit="return login()">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="电子邮件/手机号码" name="account" id="account" value="${account!}">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="密码" name="password" id="password"
+                                   value="${password!}">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">
+                                &nbsp;&nbsp;登&nbsp;&nbsp;录&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="col-md-6" style="border-left: solid 1px #D6D6D6;min-height: 240px;">
+                <ul class="list-inline">
+                    <li><h4>第一次使用义务助考平台?</h4></li>
+                    <li><a href="/user/register">立即注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Avalon define activate -->
+<script>
+    var model = avalon.define("page", function () {
+    });
+    function login() {
+        var account = $("#account").val();
+        var password = $("#password").val();
+        if (account == '' || account.length == 0) {
+            $("#msg").html("登录账号必须填写.");
+            return false;
+        }
+        if (password == '' || password.length == 0) {
+            $("#msg").html("密码必须填写.");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>

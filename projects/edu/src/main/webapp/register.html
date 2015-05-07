@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>注册 - 义务助考平台</title>
+
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- daedu-->
+    <link href="/css/toushan.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/js/jquery/jquery-1.11.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/avalon/avalon.js"></script>
+</head>
+<body ms-controller="page" class="register">
+<!-- nav 导航条 start -->
+<div ms-include-src="'/header.html'"></div>
+<!-- nav 导航条 end -->
+
+
+<!-- 指导 -->
+<div>
+    <div class="container">
+        <div class="row" style="margin-top: 15%;padding-left: 30px;color: #B20000;">
+            <span id="msg">${msg!}</span>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 style="padding-left: 15px;">注册</h3>
+
+                <form action="/user/save" method="post" onsubmit="return save()">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="姓名" name="name" id="name"
+                                   value="${name!}">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="电子邮件" name="email" id="email"
+                                   value="${email!}">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" placeholder="手机号码" name="mobile" id="mobile"
+                                   value="${mobile!}">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="密码" name="password" id="password"
+                                   value="${password!}">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">
+                                &nbsp;&nbsp;注&nbsp;&nbsp;册&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6" style="border-left: solid 1px #e0e0e0;min-height: 320px;">
+                <ul class="list-inline">
+                    <li><h4>已有账号?</h4></li>
+                    <li><a href="/user/login">登录</a></li>
+                </ul>
+                <div class="row">
+                    <div class="row bs-wizard" style="border-bottom:0;">
+
+                        <div class="col-xs-4 bs-wizard-step active">
+                            <div class="text-center bs-wizard-stepnum">第一步</div>
+                            <div class="progress">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <a href="#" class="bs-wizard-dot"></a>
+
+                            <div class="bs-wizard-info text-center">注册(填写基本资料)</div>
+                        </div>
+
+                        <div class="col-xs-4 bs-wizard-step disabled"><!-- complete -->
+                            <div class="text-center bs-wizard-stepnum">第二步</div>
+                            <div class="progress">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <a href="#" class="bs-wizard-dot"></a>
+
+                            <div class="bs-wizard-info text-center">选择指导类型</div>
+                        </div>
+
+                        <div class="col-xs-4 bs-wizard-step disabled"><!-- complete -->
+                            <div class="text-center bs-wizard-stepnum">第三步</div>
+                            <div class="progress">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <a href="#" class="bs-wizard-dot"></a>
+
+                            <div class="bs-wizard-info text-center">分配顶尖导师</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Avalon define activate -->
+<script>
+    var model = avalon.define("page", function () {
+    });
+
+    function save() {
+        var name = $("#name").val();
+        var email = $("#email").val();
+        var mobile = $("#mobile").val();
+        var password = $("#password").val();
+        if (name == '' || name.length == 0) {
+            $("#msg").html("姓名必须填写.");
+            return false;
+        }
+        if (email == '' || email.length == 0) {
+            $("#msg").html("电子邮件必须填写.");
+            return false;
+        }
+        if (mobile == '' || mobile.length == 0) {
+            $("#msg").html("手机号码必须填写.");
+            return false;
+        }
+        if (password == '' || password.length == 0) {
+            $("#msg").html("密码必须填写.");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>
